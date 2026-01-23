@@ -5,6 +5,52 @@
     --dark: #0F172B;
 }
 
+/* Estilo para o Header que você quer sempre escuro no dark-mode */
+body.dark-mode .navbar {
+    background-color: #000000 !important;
+}
+
+/* Fundo geral das seções que eram brancas */
+body.dark-mode, 
+body.dark-mode .container-xxl:not(.hero-header), 
+body.dark-mode .container-fluid:not(.hero-header),
+body.dark-mode .bg-white {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+/* Resolve o problema do "quadrado" no hambúrguer */
+body.dark-mode .hero-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/bg-hero.jpg) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-color: transparent !important; /* Remove o fundo sólido */
+}
+
+/* Cores de texto específicas para não sumirem */
+body.dark-mode h1:not(.navbar-brand h1), 
+body.dark-mode h2, 
+body.dark-mode h5,
+body.dark-mode h6, 
+body.dark-mode p, 
+body.dark-mode span:not(.btn) {
+    color: #ffffff !important;
+}
+
+/* Cards de serviços e menu */
+body.dark-mode .service-item, 
+body.dark-mode .menu-item, 
+body.dark-mode .form-control {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border: 1px solid #333 !important;
+}
+
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
 .ff-secondary {
     font-family: 'Pacifico', cursive;
 }
@@ -366,7 +412,33 @@
     padding-right: 0;
     border-right: none;
 }
+/*** Botão Modo Escuro ***/
 
-/*** contato ***/
+/* Estado Padrão (Modo Claro): Botão fica escuro com ícone claro */
+.tema-float {
+    position: fixed;
+    right: 45px;
+    bottom: 100px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    transition: 0.5s;
+    background-color: #0F172B !important; /* Cor --dark do seu root */
+    color: #ffffff !important;           /* Ícone branco */
+    border: none;
+}
 
+/* Estado no Modo Escuro: Botão fica branco com ícone escuro */
+body.dark-mode .tema-float {
+    background-color: #ffffff !important; /* Fundo branco */
+    color: #0F172B !important;           /* Ícone escuro */
+}
 
+/* Efeito Hover para ambos os estados */
+.tema-float:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}

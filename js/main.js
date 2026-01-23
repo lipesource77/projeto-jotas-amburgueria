@@ -118,3 +118,71 @@
 })(jQuery);
 
 
+// Função validar formulário
+function validarFormulario(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const review = document.getElementById('avaliacao').value;
+    const botao = document.querySelector('#Review button[type="submit"]');
+    botao.classList.remove('btn-primary');
+    botao.classList.add('btn-secondary');
+    botao.innerHTML = "Enviado!";
+    botao.style.backgroundColor = "green";
+
+
+    if (nome.trim() === "") {
+        alert("Por favor, preencha o campo de nome.");
+        alert.style.color = "red";
+        return false;
+    }
+
+
+    
+    if (email.trim() === "" || !email.includes("@")) {
+        alert("Por favor, insira um e-mail válido.");
+        alert.style.color = "red";
+        return false;
+    }
+
+    if (review.length < 10 || review.trim() === "") {
+        alert("Sua avaliação deve ter pelo menos 10 caracteres.");
+        return false;
+    }
+    
+
+    alert("Obrigado por entrar em contato conosco, " + nome + "! Sua avaliação foi enviada com sucesso.");
+    alert.style.color = "green";
+    return true;
+}
+
+
+
+
+// Modo Escuro
+function alternarTema() {
+    const corpo = document.body;
+    const icone = document.getElementById('tema-icone');
+    
+    corpo.classList.toggle("dark-mode");
+    
+    if (corpo.classList.contains("dark-mode")) {
+        icone.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem("tema-preferido", "dark");
+    } else {
+        icone.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem("tema-preferido", "light"); 
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const temaSalvo = localStorage.getItem("tema-preferido");
+    const corpo = document.body;
+    const icone = document.getElementById('tema-icone');
+
+    if (temaSalvo === "dark") {
+        corpo.classList.add("dark-mode");
+        if (icone) icone.classList.replace('fa-moon', 'fa-sun');
+    }
+});

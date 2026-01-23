@@ -126,10 +126,13 @@ function validarFormulario(event) {
     const email = document.getElementById('email').value;
     const review = document.getElementById('avaliacao').value;
     const botao = document.querySelector('#Review button[type="submit"]');
-    botao.classList.remove('btn-primary');
-    botao.classList.add('btn-secondary');
-    botao.innerHTML = "Enviado!";
-    botao.style.backgroundColor = "green";
+
+    function atualizarBotao() {
+        botao.classList.remove('btn-primary');
+        botao.classList.add('btn-secondary');
+        botao.innerHTML = "Enviado!";
+        botao.style.backgroundColor = "green";
+    }
 
 
     if (nome.trim() === "") {
@@ -150,7 +153,20 @@ function validarFormulario(event) {
         alert("Sua avaliação deve ter pelo menos 10 caracteres.");
         return false;
     }
-    
+
+
+    if (email.trim() === "" || !email.includes("@")) {
+        alert("Por favor, insira um e-mail válido.");
+        alert.style.color = "red";
+        return false;
+    }
+
+    if (review.length < 10 || review.trim() === "") {
+        alert("Sua avaliação deve ter pelo menos 10 caracteres.");
+        return false;
+    }
+
+    atualizarBotao();
 
     alert("Obrigado por entrar em contato conosco, " + nome + "! Sua avaliação foi enviada com sucesso.");
     alert.style.color = "green";

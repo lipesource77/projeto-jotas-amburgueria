@@ -24,7 +24,7 @@ body.dark-mode .hero-header {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/bg-hero.jpg) !important;
     background-size: cover !important;
     background-position: center !important;
-    background-color: transparent !important; /* Remove o fundo sólido */
+    background-color: transparent !important;
 }
 
 /* Cores de texto específicas para não sumirem */
@@ -426,15 +426,15 @@ body {
     width: 45px;
     height: 45px;
     transition: 0.5s;
-    background-color: #0F172B !important; /* Cor --dark do seu root */
-    color: #ffffff !important;           /* Ícone branco */
+    background-color: #0F172B !important; 
+    color: #ffffff !important;           
     border: none;
 }
 
 /* Estado no Modo Escuro: Botão fica branco com ícone escuro */
 body.dark-mode .tema-float {
-    background-color: #ffffff !important; /* Fundo branco */
-    color: #0F172B !important;           /* Ícone escuro */
+    background-color: #ffffff !important; 
+    color: #0F172B !important;           
 }
 
 /* Efeito Hover para ambos os estados */
@@ -442,3 +442,4 @@ body.dark-mode .tema-float {
     transform: scale(1.1);
     opacity: 0.9;
 }
+

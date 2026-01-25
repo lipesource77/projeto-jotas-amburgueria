@@ -117,3 +117,80 @@
     
 })(jQuery);
 
+
+// Função validar formulário
+function validarFormulario(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const review = document.getElementById('avaliacao').value;
+    const botao = document.getElementById('btn-submit');
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+        timer: 3500,
+        timerProgressBar: true
+    });
+
+    // Validação
+    if (nome.trim() === "" || email.trim() === "" || review.trim().length < 10) {
+        Toast.fire({
+            icon: 'error',
+            title: 'Ops! Verifique se preencheu tudo corretamente.',
+            showClass: { popup: 'animate__animated animate__headShake' }
+        });
+        return;
+    }
+
+    // --- SUCESSO ---
+    
+    // 1. Força a cor VERDE e desabilita para evitar cliques duplos
+    botao.style.setProperty('background-color', '#28a745', 'important');
+    botao.style.setProperty('color', '#fff', 'important');
+    botao.innerHTML = 'ENVIADO COM SUCESSO! <i class="fa fa-check"></i>';
+    botao.disabled = true;
+
+    // 2. Alerta com animação de "Pulo Elástico" (RubberBand)
+    Toast.fire({
+        icon: 'success',
+        title: `Obrigado, ${nome}! Sua avaliação foi enviada.`,
+        showClass: {
+            // Sobe e depois dá o efeito elástico
+            popup: 'animate__animated animate__backInUp animate__rubberBand' 
+        },
+        hideClass: {
+            popup: 'animate__animated animate__backOutDown'
+        }
+    });
+}
+
+
+// Modo Escuro
+function alternarTema() {
+    const corpo = document.body;
+    const icone = document.getElementById('tema-icone');
+    
+    corpo.classList.toggle("dark-mode");
+    
+    if (corpo.classList.contains("dark-mode")) {
+        icone.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem("tema-preferido", "dark");
+    } else {
+        icone.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem("tema-preferido", "light"); 
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const temaSalvo = localStorage.getItem("tema-preferido");
+    const corpo = document.body;
+    const icone = document.getElementById('tema-icone');
+
+    if (temaSalvo === "dark") {
+        corpo.classList.add("dark-mode");
+        if (icone) icone.classList.replace('fa-moon', 'fa-sun');
+    }
+});

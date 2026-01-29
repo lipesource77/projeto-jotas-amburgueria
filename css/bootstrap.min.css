@@ -55,6 +55,47 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
+
+.avalStars {
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.avalStars .bi-star-fill {
+
+    user-select: none;
+
+    height: 100px;
+    width: 100px;
+    font-size: 4.5rem;
+    color: var(--bs-gray-dark);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.1s;
+}
+
+.star:hover {
+    transform: 0.5s;
+    font-size: 5rem;
+}
+
+.star:active {
+    font-size: 4.5rem;
+    color: goldenrod;
+}
+
+.avalStars .starInput {
+    display: none;
+}
+
+
+
+
 hr {
     margin: 1rem 0;
     color: inherit;
@@ -85,6 +126,14 @@ h6,
     font-weight: 800;
     line-height: 1.2;
     color: #0F172B
+}
+
+#logo {
+    padding: 5px;
+    border: solid;
+    display: flex;
+    width: 9                                                00px;
+    flex-flow: nowrap;
 }
 
 h1,

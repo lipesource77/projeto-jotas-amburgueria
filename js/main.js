@@ -194,3 +194,25 @@ window.addEventListener('DOMContentLoaded', () => {
         if (icone) icone.classList.replace('fa-moon', 'fa-sun');
     }
 });
+
+let labelStar1 = document.getElementById("1")
+
+const Stars = document.getElementsByClassName("star")
+
+for (let i = 0; i < (Stars.length); i++) {
+    let item = Stars[i]
+    item.addEventListener('click', () => {
+  
+        for (let y = 0; y < item.id; y++) {
+            Stars[y].style.color = 'gold'
+        }
+
+    })
+    item.addEventListener('mousedown', () => {
+        item.style.color = 'goldenrod'
+    })
+}
+
+function turnOnOffStar() {
+
+}

@@ -2,7 +2,6 @@
 <html lang="pt-br">
 
 <head>
-    #come bosta
     <meta charset="utf-8">
     <title>Restoran - Bootstrap Restaurant Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -15,9 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -36,10 +33,67 @@
 </head>
 
 <body>
+
+<!-- começo do JavaScript -->
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('cadastroForm');
+    const checkboxOutro = document.getElementById('Outro');
+    const campoObservacoes = document.getElementById('observacoes');
+
+    // 1. Lógica para habilitar/desabilitar o campo "Outro"
+    checkboxOutro.addEventListener('change', function() {
+        if (this.checked) {
+            campoObservacoes.disabled = false;
+            campoObservacoes.style.backgroundColor = "#fff";
+            campoObservacoes.focus();
+        } else {
+            campoObservacoes.disabled = true;
+            campoObservacoes.style.backgroundColor = "#e9ecef";
+            campoObservacoes.value = ""; 
+        }
+    });
+
+    // 2. Validação e Envio
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+
+        // Validação manual de e-mail (caso o type="email" do HTML falhe)
+        if (!email.includes('@') || email.length < 5) {
+            alert('Por favor, insira um e-mail válido.');
+            return;
+        }
+
+        // Feedback visual no botão
+        const btn = document.getElementById('btnEnviar');
+        const textoOriginal = btn.innerHTML;
+        
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Processando...';
+
+        // Simulação de envio
+        setTimeout(() => {
+            alert(Sucesso! Bem-vindo(a) à família Jota's, ${nome}!);
+            
+            btn.disabled = false;
+            btn.innerHTML = textoOriginal;
+            form.reset();
+            
+            // Resetar o campo observações após limpar o form
+            campoObservacoes.disabled = true;
+            campoObservacoes.style.backgroundColor = "#e9ecef";
+        }, 2000);
+    });
+});
+</script>
+<!-- fim do JavaScript -->
+
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
-        <div id="spinner"
-            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -47,11 +101,12 @@
         <!-- Spinner End -->
 
 
-        <!-- Navbar & Hero Start -->
+        <!-- Começo do Navbar & Hero -->
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
+                    <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; color: rgb(233, 215, 113); font-weight: bold;" class="text-primary m-0"><img src="img/jotas_logo_1-removebg-preview.png" alt="Logo jotas sem fundo"> Jota's Hamburgueria<br>
+                        Premium </h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -61,7 +116,7 @@
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="index.html" class="nav-item nav-link">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link active">Service</a>
+                        <a href="Faça sua Conta.html" class="nav-item nav-link active">Faça sua Conta</a>
                         <a href="menu.html" class="nav-item nav-link">Menu</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -77,114 +132,88 @@
                 </div>
             </nav>
 
+            
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Services</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Service</li>
-                        </ol>
-                    </nav>
-                </div>
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 style="font-size: 3rem"class="ff-secondary text-center text-primary fw-normal">Faça sua Conta conosco</h1>
+                        <br>
+                        <h5 class="mb-5" style="color: white;">e receba nossas ofertas por email e muito mais</h5>
+                    </div>
+                        <ol class="breadcrumb justify-content-center text-uppercase"></ol>
+
             </div>
         </div>
-        <!-- Navbar & Hero End -->
+        <!-- final do Navbar & Hero -->
 
 
-        <!-- Service Start -->
-        <div class="container-xxl py-5">
+        <!-- Começo da Pagina para Login -->
+        <div class="container-xl py-5">
             <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Our Services</h5>
-                    <h1 class="mb-5">Explore Our Services</h1>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                                <h5>Master Chefs</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                                <h5>Quality Food</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                                <h5>Online Order</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                <h5>24/7 Service</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                                <h5>Master Chefs</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                                <h5>Quality Food</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                                <h5>Online Order</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                <h5>24/7 Service</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
+                <div class="container">
+                    <div class="p-5">
+                        <form id="Formulario">
+                        <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
+                        <br>
+                        <label><h5>Nome:</h5></label>
+                            <input id="nome" class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Nome" required>
+                            <br/>
+                        <label><h5>Sobrenome:</h5></label>
+                            <input id="sobrenome" class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Sobrenome" required>
+                            <br>
+                        <label><h5>Genero</h5></label>
+                            <br>
+                            <input id="masculino" type="radio" value="Masculino" name="sexo"> Masculino
+                            <br>
+                            <input id="feminino" type="radio" value="Feminino" name="sexo"> Feminino
+                            <br>
+                            <input id="outro_genero" type="radio" value="Outro" name="sexo"> Outro...
+                            <br>
+                        <label><h5>Email:</h5></label>
+                            <input id="email" class="form-control border-primary w-100 py-3 ps-4 pe-5" type="email" placeholder="Email" required>
+                            <br>
+                        <label><h5>Como nos conheceu?</h5></label>
+                            <br>
+                            <input id="redes_sociais" type="checkbox" name="Como" value="Redes_Sociais"> Redes Sociais
+                            <br>
+                            <input id="amigos" type="checkbox" name="Como" value="Amigos"> Amigos
+                            <br>
+                            <input id="comentarios" type="checkbox" name="Como" value="Comentarios"> Comentarios
+                            <br>
+                            <input id="Outro" type="checkbox" name="Como" value="Outro"> Outro...
+                            <br>
+                        <label><h5>Espaço Para Opção "Outro"</h5></label>
+                            <textarea class="form-control border-primary w-100 py-3 ps-4 pe-5" name="observacoes" rows="4" cols="20">Digite Aqui</textarea>
+                            <br>
+                        <label><h5>Crie sua Senha:</h5></label>
+                            <input id="senha" class="form-control border-primary w-100 py-3 ps-4 pe-5" type="password" placeholder="Senha" required>
+                            <br>
+                            <label><h5>Onde voce mora:</h5></label>
+                            <select class="form-control border-primary w-100 py-3 ps-4 pe-5">
+                            <option> Currais Novos </option>
+                            <option> Lagoa Nova </option>
+                            <option> Cerro corá </option>
+                            <option> Caico </option>
+                            <option> Santa cruz </option>
+                            <option> Tangara </option>
+                            <option> Natal </option>
+                            </select>
+                            <br>
+                                <button type="submit" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">Crie a sua Conta</button>
+                            </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Service End -->
+        <!-- Fim da Pagina de Login -->
+        
 
-
-        <!-- Footer Start -->
+        <!-- Começo do Footer-->
         <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
+                        <h4 class="ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
                         <a class="btn btn-link" href="">About Us</a>
                         <a class="btn btn-link" href="">Contact Us</a>
                         <a class="btn btn-link" href="">Reservation</a>
@@ -192,32 +221,26 @@
                         <a class="btn btn-link" href="">Terms & Condition</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                        <h4 class="ff-secondary text-start text-primary fw-normal mb-4">Nossas informaçoes</h4>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>R. Cap. Mor Galvão, 182 - Centro, Currais Novos - RN, 59380-000</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(84) 99653-0097</p>
+                        
                         <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/jotashamburgueria_/"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://l.instagram.com/?u=http%3A%2F%2Fwa.me%2F5584996530097%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnc6hqoTmY5MsGYcB5Sw9pLtyKbhn6W473_TOLIdmpDeaJiQVs1i0-jKfx-LQ_aem_fM4ivwA4ykDL6LqDJ-dxsA&e=AT0Nkn9CYKcCDgNE8-HBwYNf64zqQ-IpW9kLMUda6PMLCWSYV-GrlUFWAvtvhz59dwBrp_sA_R-c0hePBLpxmbCtN5BxHu2ehjVoBV_XwUBwCKlIxi1cb6S_UQ"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
-                        <h5 class="text-light fw-normal">Monday - Saturday</h5>
-                        <p>09AM - 09PM</p>
-                        <h5 class="text-light fw-normal">Sunday</h5>
-                        <p>10AM - 08PM</p>
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Horario de Funcionamento</h4>
+                        <h5 class="text-light fw-normal">Segunda - Domingo</h5>
+                        <p>18:00 - 00:00</p>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
-                        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Nos envie uma mensagem</h4>
+                        <p class="mb-2">Envie uma mensagem para nosso email com algum comentario seu.</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text"
-                                placeholder="Your email">
-                            <button type="button"
-                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Escreva aqui"> 
+                            <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
                         </div>
                     </div>
                 </div>
@@ -226,18 +249,17 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
-                            Distributed By <a class="border-bottom" href="https://themewagon.com"
-                                target="_blank">ThemeWagon</a>
+                            &copy; <a class="border-bottom" href="#">jotas Hamburgueria Premium</a>, Todos os Direitos Reservados. 
+							
+							<!--/* This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. */-->
+							Desine por <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
+                            Projetado por <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
                                 <a href="">Home</a>
                                 <a href="">Cookies</a>
-                                <a href="">Help</a>
+                                <a href="">Ajuda</a>
                                 <a href="">FQAs</a>
                             </div>
                         </div>
@@ -245,17 +267,12 @@
                 </div>
             </div>
         </div>
-        <!-- Footer End -->
+        <!-- Fim do Footer -->
 
-        <!-- Botao Modo Escuro -->
-        <a href="javascript:void(0)" id="btn-tema" onclick="alternarTema()"
-            class="btn btn-lg btn-primary btn-lg-square tema-float">
-            <i id="tema-icone" class="fa fa-moon"></i>
-        </a>
 
-        <!-- Back to Top -->
+        <!-- Botão para voltar a parte de cima da Pagina -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

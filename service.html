@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Restoran - Bootstrap Restaurant Template</title>
+    <title>Faça sua Conta - Jota's Hamburgueria Premium</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -35,63 +35,37 @@
 <body>
 
 <!-- começo do JavaScript -->
-    <script>
-       document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('cadastroForm');
-    const checkboxOutro = document.getElementById('Outro');
-    const campoObservacoes = document.getElementById('observacoes');
+<script>
+function alternarTema() {
+    const corpo = document.body;
+    const icone = document.getElementById('tema-icone');
 
-    // 1. Lógica para habilitar/desabilitar o campo "Outro"
-    checkboxOutro.addEventListener('change', function() {
-        if (this.checked) {
-            campoObservacoes.disabled = false;
-            campoObservacoes.style.backgroundColor = "#fff";
-            campoObservacoes.focus();
-        } else {
-            campoObservacoes.disabled = true;
-            campoObservacoes.style.backgroundColor = "#e9ecef";
-            campoObservacoes.value = ""; 
-        }
-    });
+    corpo.classList.toggle("dark-mode");
 
-    // 2. Validação e Envio
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); 
+    if (corpo.classList.contains("dark-mode")) {
+        icone.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem("tema", "dark");
+    } else {
+        icone.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem("tema", "light");
+    }
+}
 
-        const nome = document.getElementById('nome').value;
-        const email = document.getElementById('email').value;
+window.addEventListener('DOMContentLoaded', () => {
+    const temaSalvo = localStorage.getItem("tema");
+    const corpo = document.body;
+    const icone = document.getElementById('tema-icone');
 
-        // Validação manual de e-mail (caso o type="email" do HTML falhe)
-        if (!email.includes('@') || email.length < 5) {
-            alert('Por favor, insira um e-mail válido.');
-            return;
-        }
-
-        // Feedback visual no botão
-        const btn = document.getElementById('btnEnviar');
-        const textoOriginal = btn.innerHTML;
-        
-        btn.disabled = true;
-        btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Processando...';
-
-        // Simulação de envio
-        setTimeout(() => {
-            alert(Sucesso! Bem-vindo(a) à família Jota's, ${nome}!);
-            
-            btn.disabled = false;
-            btn.innerHTML = textoOriginal;
-            form.reset();
-            
-            // Resetar o campo observações após limpar o form
-            campoObservacoes.disabled = true;
-            campoObservacoes.style.backgroundColor = "#e9ecef";
-        }, 2000);
-    });
+    if (temaSalvo === "dark") {
+        corpo.classList.add("dark-mode");
+        if (icone) icone.classList.replace('fa-moon', 'fa-sun');
+    }
 });
 </script>
+
 <!-- fim do JavaScript -->
 
-    <div class="container-xxl bg-white p-0">
+    <div id="main-container" class="container-xxl p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -101,50 +75,50 @@
         <!-- Spinner End -->
 
 
-        <!-- Começo do Navbar & Hero -->
+         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+            <div class="container-xxl py-5 hero-header mb-5">
                 <a href="" class="navbar-brand p-0">
-                    <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; color: rgb(233, 215, 113); font-weight: bold;" class="text-primary m-0"><img src="img/jotas_logo_1-removebg-preview.png" alt="Logo jotas sem fundo"> Jota's Hamburgueria<br>
-                        Premium </h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                    <h1 id="logo"
+                        style="font-family: Georgia, 'Times New Roman', Times, serif; color: rgb(233, 215, 113); font-weight: lighter;"
+                        class="text-primary m-0"><img src="img/jotas_logo_1-removebg-preview.png"
+                            alt="Logo jotas sem fundo"> Jota's Hamburgueria <br> Premium </h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="Faça sua Conta.html" class="nav-item nav-link active">Faça sua Conta</a>
-                        <a href="menu.html" class="nav-item nav-link">Menu</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="booking.html" class="dropdown-item">Booking</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="index.html" class="nav-item nav-link">Início</a>
+                        <a href="about.html" class="nav-item nav-link">Sobre</a>
+                        <a href="service.html" class="nav-item nav-link active">Faça a sua conta</a>
+                        <a href="menu.html" class="nav-item nav-link">Cardápio</a>
+                        <a href="contact.html" class="nav-item nav-link">Avalie-nos</a>
                     </div>
-                    <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
+                    <a href="booking.html" class="btn btn-primary py-2 px-4">Reserve sua mesa</a>
                 </div>
             </nav>
 
-            
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <h1 style="font-size: 3rem"class="ff-secondary text-center text-primary fw-normal">Faça sua Conta conosco</h1>
-                        <br>
-                        <h5 class="mb-5" style="color: white;">e receba nossas ofertas por email e muito mais</h5>
+                <div class="container my-5 py-5">
+                    <div class="row align-items-center g-5 ">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1 class="display-3 text-white animated slideInLeft">Aproveite nossos<br>pratos de dar água
+                                na boca</h1>
+                            <p class="text-white animated slideInLeft mb-4 pb-2">Padrão de qualidade da Pizza ao
+                                Burguer. Com uma entrega rápida e eficiente, o seu pedido quente chegará até você. Tá
+                                esperando o que? Chama o Jota's!</p>
+                            <a href="booking.html"
+                                class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Reserve sua mesa</a>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden">
+                            <img class="img-fluid" src="img/cd8cb36e-a9bf-4d99-ac15-7a5333acbb13.png" alt="">
+                        </div>
                     </div>
-                        <ol class="breadcrumb justify-content-center text-uppercase"></ol>
-
+                </div>
             </div>
         </div>
-        <!-- final do Navbar & Hero -->
+        <!-- Navbar & Hero End -->
 
 
         <!-- Começo da Pagina para Login -->
@@ -208,67 +182,53 @@
         <!-- Fim da Pagina de Login -->
         
 
-        <!-- Começo do Footer-->
+        <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
-                <div class="row g-5">
+                <div class="row g-5 justify-content-center text-center">
                     <div class="col-lg-3 col-md-6">
-                        <h4 class="ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Reservation</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="ff-secondary text-start text-primary fw-normal mb-4">Nossas informaçoes</h4>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>R. Cap. Mor Galvão, 182 - Centro, Currais Novos - RN, 59380-000</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(84) 99653-0097</p>
-                        
-                        <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/jotashamburgueria_/"><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-social" href="https://l.instagram.com/?u=http%3A%2F%2Fwa.me%2F5584996530097%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnc6hqoTmY5MsGYcB5Sw9pLtyKbhn6W473_TOLIdmpDeaJiQVs1i0-jKfx-LQ_aem_fM4ivwA4ykDL6LqDJ-dxsA&e=AT0Nkn9CYKcCDgNE8-HBwYNf64zqQ-IpW9kLMUda6PMLCWSYV-GrlUFWAvtvhz59dwBrp_sA_R-c0hePBLpxmbCtN5BxHu2ehjVoBV_XwUBwCKlIxi1cb6S_UQ"><i class="fab fa-whatsapp"></i></a>
+                        <h4 class="section-title ff-secondary text-primary fw-normal mb-4">Companhia</h4>
+                        <div class="d-flex flex-column align-items-center">
+                            <a class="btn btn-link" href="#sobrenos">Sobre nós</a>
+                            <a class="btn btn-link" href="booking.html">Reservamento</a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Horario de Funcionamento</h4>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <h4 class="section-title ff-secondary text-primary fw-normal mb-4">Contato</h4>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Rua Capitão Mor Galvão, 182, Currais
+                            Novos 59380000</p>
+                        <p class="mb-2" id="Contatenos"><i class="fa fa-phone-alt me-3"></i>+55 84-996530097</p>
+                        <div class="d-flex justify-content-center pt-2">
+                            <a class="btn btn-outline-light btn-social mx-1"
+                                href="https://www.instagram.com/jotashamburgueria_/"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light btn-social mx-1" href="https://wa.me/5584996530097"><i
+                                    class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Horario</h4>
                         <h5 class="text-light fw-normal">Segunda - Domingo</h5>
-                        <p>18:00 - 00:00</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Nos envie uma mensagem</h4>
-                        <p class="mb-2">Envie uma mensagem para nosso email com algum comentario seu.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Escreva aqui"> 
-                            <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
-                        </div>
+                        <p>18h - 00h10m</p>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">jotas Hamburgueria Premium</a>, Todos os Direitos Reservados. 
-							
-							<!--/* This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. */-->
-							Desine por <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
-                            Projetado por <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <div class="footer-menu">
-                                <a href="">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Ajuda</a>
-                                <a href="">FQAs</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="footer-menu">
+                <a href="index.html">início</a>
             </div>
         </div>
-        <!-- Fim do Footer -->
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- Footer End -->
 
+
+     <!-- Botao Modo Escuro -->
+    <a href="javascript:void(0)" id="btn-tema" onclick="alternarTema()"
+        class="btn btn-lg btn-primary btn-lg-square tema-float">
+        <i id="tema-icone" class="fa fa-moon"></i>
+    </a>
 
         <!-- Botão para voltar a parte de cima da Pagina -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

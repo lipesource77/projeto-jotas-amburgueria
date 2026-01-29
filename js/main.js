@@ -193,8 +193,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (icone) icone.classList.replace('fa-moon', 'fa-sun');
     }
 });
-
-let labelStar1 = document.getElementById("1")
+// Avaliação com Estrelas
 
 const Stars = document.getElementsByClassName("star")
 
@@ -205,13 +204,12 @@ for (let i = 0; i < (Stars.length); i++) {
         for (let y = 0; y < item.id; y++) {
             Stars[y].style.color = 'gold'
         }
+        for (let y = item.id; y <= 5; y++) {
+            Stars[y].style.color = 'var(--bs-gray-dark)'
+        }
 
     })
     item.addEventListener('mousedown', () => {
         item.style.color = 'goldenrod'
     })
-}
-
-function turnOnOffStar() {
-
 }

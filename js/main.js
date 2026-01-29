@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner();
-    
-    
+
+
     // Initiate the wowjs
     new WOW().init();
 
@@ -24,36 +24,36 @@
             $('.navbar').removeClass('sticky-top shadow-sm');
         }
     });
-    
-    
+
+
     // Dropdown on mouse hover
     const $dropdown = $(".dropdown");
     const $dropdownToggle = $(".dropdown-toggle");
     const $dropdownMenu = $(".dropdown-menu");
     const showClass = "show";
-    
-    $(window).on("load resize", function() {
+
+    $(window).on("load resize", function () {
         if (this.matchMedia("(min-width: 992px)").matches) {
             $dropdown.hover(
-            function() {
-                const $this = $(this);
-                $this.addClass(showClass);
-                $this.find($dropdownToggle).attr("aria-expanded", "true");
-                $this.find($dropdownMenu).addClass(showClass);
-            },
-            function() {
-                const $this = $(this);
-                $this.removeClass(showClass);
-                $this.find($dropdownToggle).attr("aria-expanded", "false");
-                $this.find($dropdownMenu).removeClass(showClass);
-            }
+                function () {
+                    const $this = $(this);
+                    $this.addClass(showClass);
+                    $this.find($dropdownToggle).attr("aria-expanded", "true");
+                    $this.find($dropdownMenu).addClass(showClass);
+                },
+                function () {
+                    const $this = $(this);
+                    $this.removeClass(showClass);
+                    $this.find($dropdownToggle).attr("aria-expanded", "false");
+                    $this.find($dropdownMenu).removeClass(showClass);
+                }
             );
         } else {
             $dropdown.off("mouseenter mouseleave");
         }
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -63,7 +63,7 @@
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
         return false;
     });
 
@@ -101,20 +101,20 @@
         margin: 24,
         dots: true,
         loop: true,
-        nav : false,
+        nav: false,
         responsive: {
-            0:{
-                items:1
+            0: {
+                items: 1
             },
-            768:{
-                items:2
+            768: {
+                items: 2
             },
-            992:{
-                items:3
+            992: {
+                items: 3
             }
         }
     });
-    
+
 })(jQuery);
 
 
@@ -146,7 +146,7 @@ function validarFormulario(event) {
     }
 
     // --- SUCESSO ---
-    
+
     // 1. Força a cor VERDE e desabilita para evitar cliques duplos
     botao.style.setProperty('background-color', '#28a745', 'important');
     botao.style.setProperty('color', '#fff', 'important');
@@ -158,8 +158,7 @@ function validarFormulario(event) {
         icon: 'success',
         title: `Obrigado, ${nome}! Sua avaliação foi enviada.`,
         showClass: {
-            // Sobe e depois dá o efeito elástico
-            popup: 'animate__animated animate__backInUp animate__rubberBand' 
+            popup: 'animate__animated animate__backInUp animate__rubberBand'
         },
         hideClass: {
             popup: 'animate__animated animate__backOutDown'
@@ -172,15 +171,15 @@ function validarFormulario(event) {
 function alternarTema() {
     const corpo = document.body;
     const icone = document.getElementById('tema-icone');
-    
+
     corpo.classList.toggle("dark-mode");
-    
+
     if (corpo.classList.contains("dark-mode")) {
         icone.classList.replace('fa-moon', 'fa-sun');
         localStorage.setItem("tema-preferido", "dark");
     } else {
         icone.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem("tema-preferido", "light"); 
+        localStorage.setItem("tema-preferido", "light");
     }
 }
 
@@ -194,25 +193,3 @@ window.addEventListener('DOMContentLoaded', () => {
         if (icone) icone.classList.replace('fa-moon', 'fa-sun');
     }
 });
-
-let labelStar1 = document.getElementById("1")
-
-const Stars = document.getElementsByClassName("star")
-
-for (let i = 0; i < (Stars.length); i++) {
-    let item = Stars[i]
-    item.addEventListener('click', () => {
-  
-        for (let y = 0; y < item.id; y++) {
-            Stars[y].style.color = 'gold'
-        }
-
-    })
-    item.addEventListener('mousedown', () => {
-        item.style.color = 'goldenrod'
-    })
-}
-
-function turnOnOffStar() {
-
-}

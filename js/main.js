@@ -208,8 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-let labelStar1 = document.getElementById("1")
-
+// Avaliação com Estrelas
 const Stars = document.getElementsByClassName("star")
 
 for (let i = 0; i < (Stars.length); i++) {
@@ -222,14 +221,8 @@ for (let i = 0; i < (Stars.length); i++) {
         for (let j = item.id; j < Stars.length; j++) {
             Stars[j].style.color = 'var(--bs-gray-dark)'
         }
-
-
     })
     item.addEventListener('mousedown', () => {
         item.style.color = 'goldenrod'
     })
-}
-
-function turnOnOffStar() {
-
 }

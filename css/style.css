@@ -4,6 +4,40 @@
     --light: #F1F8FF;
     --dark: #0F172B;
 }
+/* Estiliza o campo de seleção (Pessoas) no Modo Escuro */
+body.dark-mode select.form-control,
+body.dark-mode select.form-select {
+    background-color: #111111 !important; /* Cor de fundo escura */
+    color: #ffffff !important;           /* Cor do texto branca */
+    border-color: #444444 !important;    /* Cor da borda suave */
+}
+
+/* Estiliza as opções dentro do select para garantir que apareçam no Windows/Linux */
+body.dark-mode select option {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+/* Ajuste para o foco do campo */
+body.dark-mode select.form-control:focus {
+    background-color: #1a1a1a !important;
+    border-color: #e9d771 !important; /* Dourado da Jota's ao clicar */
+    box-shadow: none;
+}
+
+/* Correção para o SweetAlert2 (Toast) no Modo Escuro */
+body.dark-mode .swal2-popup.swal2-toast {
+    background-color: #ffffff !important; /* Mantém o fundo branco para contraste */
+}
+
+body.dark-mode .swal2-popup.swal2-toast .swal2-title {
+    color: #333333 !important; /* Força o texto a ser cinza escuro */
+}
+
+/* Garante que o ícone e o texto do botão de fechar (se houver) apareçam */
+body.dark-mode .swal2-popup.swal2-toast .swal2-content {
+    color: #333333 !important;
+}
 
 /* Transição suave ao trocar de tema */
 body {

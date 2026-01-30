@@ -219,6 +219,10 @@ for (let i = 0; i < (Stars.length); i++) {
         for (let y = 0; y < item.id; y++) {
             Stars[y].style.color = 'gold'
         }
+        for (let j = item.id; j < Stars.length; j++) {
+            Stars[j].style.color = 'var(--bs-gray-dark)'
+        }
+
 
     })
     item.addEventListener('mousedown', () => {

@@ -132,11 +132,12 @@ h6,
 
 #logo {
     padding: 5px;
-    border: solid;
+
     display: flex;
-    width: 900px;
-    flex-flow: nowrap;
+    justify-content: center;
+    align-items: center;
 }
+
 
 h1,
 .h1 {

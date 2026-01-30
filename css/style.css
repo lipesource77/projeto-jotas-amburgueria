@@ -5,7 +5,30 @@
     --dark: #0F172B;
 }
 
+/* Transição suave ao trocar de tema */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
+/* Garante que o fundo da página Sobre e outras seções mude */
+body.dark-mode {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+/* Ajuste específico para as seções brancas do Bootstrap */
+body.dark-mode .container-xxl, 
+body.dark-mode .container-fluid {
+    background-color: transparent; /* Deixa o fundo do body aparecer */
+}
+
+/* Corrigindo cards e itens de equipe no modo escuro */
+body.dark-mode .team-item,
+body.dark-mode .service-item,
+body.dark-mode .about-img img {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+}
 
 /* Estilo para o Header que você quer sempre escuro no dark-mode */
 body.dark-mode .navbar {

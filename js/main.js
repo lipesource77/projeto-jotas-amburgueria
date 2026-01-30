@@ -167,30 +167,44 @@ function validarFormulario(event) {
 }
 
 
-// Modo Escuro
+// Modo Escuro - Função Unificada
 function alternarTema() {
     const corpo = document.body;
     const icone = document.getElementById('tema-icone');
-
+    
+    // Toggle da classe
     corpo.classList.toggle("dark-mode");
 
+    // Lógica de verificação e salvamento
     if (corpo.classList.contains("dark-mode")) {
-        icone.classList.replace('fa-moon', 'fa-sun');
-        localStorage.setItem("tema", "dark");
+        // Se estiver no dark mode: ícone de sol
+        if (icone) {
+            icone.classList.remove('fa-moon');
+            icone.classList.add('fa-sun');
+        }
+        localStorage.setItem("tema-preferido", "dark");
     } else {
-        icone.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem("tema", "light");
+        // Se estiver no light mode: ícone de lua
+        if (icone) {
+            icone.classList.remove('fa-sun');
+            icone.classList.add('fa-moon');
+        }
+        localStorage.setItem("tema-preferido", "light");
     }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+// Executar ao carregar qualquer página
+document.addEventListener('DOMContentLoaded', () => {
     const temaSalvo = localStorage.getItem("tema-preferido");
     const corpo = document.body;
     const icone = document.getElementById('tema-icone');
 
     if (temaSalvo === "dark") {
         corpo.classList.add("dark-mode");
-        if (icone) icone.classList.replace('fa-moon', 'fa-sun');
+        if (icone) {
+            icone.classList.remove('fa-moon');
+            icone.classList.add('fa-sun');
+        }
     }
 });
 

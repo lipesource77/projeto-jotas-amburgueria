@@ -176,7 +176,7 @@
                                 href="https://www.instagram.com/jotashamburgueria_/"><i
                                     class="fab fa-instagram"></i></a>
                             <a class="btn btn-outline-light btn-social mx-1" href="https://wa.me/5584996530097"><i
-                                    class="fa fa-whatsapp"></i></a>
+                                    class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 text-center">
@@ -219,6 +219,60 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const reservationForm = document.querySelector('form');
+    
+    reservationForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Impede o recarregamento da página
+
+        // Captura dos dados
+        const formData = {
+            nome: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            dataHora: document.getElementById('datetime').value,
+            pessoas: document.getElementById('select1').value,
+            mensagem: document.getElementById('message').value
+        };
+
+        // Validação 
+        if (!formData.nome || !formData.email || !formData.dataHora) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ops...',
+                text: 'Por favor, preencha os campos obrigatórios!',
+                confirmButtonColor: '#FEA116'
+            });
+            return;
+        }
+
+        // Feedback visual de carregamento
+        const btn = e.target.querySelector('button');
+        const originalText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processando...';
+
+        setTimeout(() => {
+            console.log("Dados enviados:", formData);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Reserva Solicitada!',
+                text: `Obrigado, ${formData.nome}. Sua reserva foi solicitada com sucesso.`,
+                confirmButtonColor: '#FEA116'
+            });
+
+            // Reseta o formulário e o botão
+            reservationForm.reset();
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }, 1500);
+    });
+});
+</script>
 </body>
 
 </html>

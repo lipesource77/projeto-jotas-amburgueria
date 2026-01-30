@@ -96,7 +96,7 @@
             <div class="container">
                 <div class="container">
                     <div class="p-5">
-                        <form id="Formulario">
+                        <form id="cadastroForm">
                             <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
                             <br>
                             <label>
@@ -238,7 +238,6 @@
     <!-- Botão para voltar a parte de cima da Pagina -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -251,8 +250,37 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
+<script>
+    $(document).ready(function () {
+
+        // 2. Lógica do Formulário de Cadastro
+        $('#cadastroForm').on('submit', function (e) {
+            e.preventDefault(); // Impede a página de recarregar
+            e.stopImmediatePropagation()
+
+            // Captura os valores
+            const nome = $('#nome').val();
+            const email = $('#email').val();
+            const senha = $('#senha').val();
+            const genero = $('input[name="sexo"]:checked').val();
+
+            // Validação simples de senha
+            if (senha.length < 6) {
+                alert("A senha deve ter pelo menos 6 caracteres.");
+                return;
+            }
+
+            // Simulação de sucesso
+            alert(`Olá ${nome}! Seu cadastro foi realizado com sucesso. \nEnviamos um confirmacão para: ${email}`);
+            
+            // Limpa o formulário
+            this.reset();
+        });
+    });
+</script>
+
     <!-- Template Javascript -->
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

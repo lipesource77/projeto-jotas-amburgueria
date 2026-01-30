@@ -176,10 +176,10 @@ function alternarTema() {
 
     if (corpo.classList.contains("dark-mode")) {
         icone.classList.replace('fa-moon', 'fa-sun');
-        localStorage.setItem("tema-preferido", "dark");
+        localStorage.setItem("tema", "dark");
     } else {
         icone.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem("tema-preferido", "light");
+        localStorage.setItem("tema", "light");
     }
 }
 

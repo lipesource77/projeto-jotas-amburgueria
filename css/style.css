@@ -5,6 +5,8 @@
     --dark: #0F172B;
 }
 
+
+
 /* Estilo para o Header que você quer sempre escuro no dark-mode */
 body.dark-mode .navbar {
     background-color: #000000 !important;

@@ -35,37 +35,6 @@
 </head>
 
 <body>
-    <!-- nao mais cagado -->
-    <!-- começo do JavaScript -->
-    <script>
-        function alternarTema() {
-            const corpo = document.body;
-            const icone = document.getElementById('tema-icone');
-
-            corpo.classList.toggle("dark-mode");
-
-            if (corpo.classList.contains("dark-mode")) {
-                icone.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem("tema", "dark");
-            } else {
-                icone.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem("tema", "light");
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const temaSalvo = localStorage.getItem("tema");
-            const corpo = document.body;
-            const icone = document.getElementById('tema-icone');
-
-            if (temaSalvo === "dark") {
-                corpo.classList.add("dark-mode");
-                if (icone) icone.classList.replace('fa-moon', 'fa-sun');
-            }
-        });
-    </script>
-
-    <!-- fim do JavaScript -->
 
     <div id="main-container" class="container-xxl p-0">
         <!-- Spinner Start -->

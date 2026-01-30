@@ -11,6 +11,24 @@
     };
     spinner();
 
+function aplicarTemaSalvo() {
+    const temaSalvo = localStorage.getItem("tema-preferido");
+    if (temaSalvo === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+}
+
+// Executa imediatamente para evitar o "flash" branco
+aplicarTemaSalvo();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const temaSalvo = localStorage.getItem("tema-preferido");
+    const icone = document.getElementById('tema-icone');
+
+    if (temaSalvo === "dark" && icone) {
+        icone.classList.replace('fa-moon', 'fa-sun');
+    }
+});
 
     // Iniciar o wowjs
     new WOW().init();
